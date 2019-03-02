@@ -1,0 +1,27 @@
+{
+  "name": "tankionline.js",
+  "version": "1.0.0",
+  "description": "A easy to use wrapper that fetches player ratings for Tanki Online",
+  "main": "src/tankionline.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeopJr/tankionline.js.git"
+  },
+  "keywords": [
+    "tanki",
+    "tankionline",
+    "ratings"
+  ],
+  "author": "GeopJr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeopJr/tankionline.js/issues"
+  },
+  "homepage": "https://github.com/GeopJr/tankionline.js#readme",
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  }
+}

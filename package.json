@@ -4,7 +4,7 @@
   "description": "A easy to use wrapper that fetches player ratings for Tanki Online",
   "main": "src/tankionline.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm i && node src/tankionline.js"
   },
   "repository": {
     "type": "git",

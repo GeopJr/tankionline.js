@@ -17,7 +17,8 @@ $ npm i tankionline.js
 ```
 
 # Example
-```
+```js
+// Initialize
 const tankionline = require("tankionline.js");
 
 const Ratings = new tankionline('GeopJr', 'en');
@@ -28,6 +29,7 @@ console.log(data)
 console.log(data.kd)
 // 2.99
 }).catch(error => { console.log(error)});
+// Catch errors
 ```
 #### More info in the [Wiki](https://github.com/GeopJr/tankionline.js/wiki)
 

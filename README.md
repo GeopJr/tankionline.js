@@ -12,7 +12,7 @@
   </p>
   <br />
   <p>
-    <a href="https://www.npmjs.com/package/tankionline.js"><img src="https://nodei.co/npm/tankionline.js.png"></a>
+    <a href="https://www.npmjs.com/package/tankionline.js"><img src="https://nodei.co/npm/tankionline.js.png?compact=true"></a>
   </p>
   <br />
   <p>An API wrapper for Tanki Online ratings.</p>

@@ -27,203 +27,203 @@ module.exports = class Ratings {
             var premm = "No";
             if ((data.response.rank) == 1) {
                 var rank = "Recruit"
-                var rimg = "https://i.imgur.com/ZcBNexc.png"
+                var rimg = "https://i.imgur.com/XFgEhqI.png"
             } else if ((data.response.rank) == 2) {
                 var rank = "Private"
-                var rimg = "https://i.imgur.com/Jaar0MF.png"
+                var rimg = "https://i.imgur.com/4cRsGXS.png"
             } else if ((data.response.rank) == 3) {
                 var rank = "Gefreiter"
-                var rimg = "https://i.imgur.com/j2DfBdW.png"
+                var rimg = "https://i.imgur.com/vMqsOIf.png"
             } else if ((data.response.rank) == 4) {
                 var rank = "Corporal"
-                var rimg = "https://i.imgur.com/7Pn4X88.png"
+                var rimg = "https://i.imgur.com/6amIVZS.png"
             } else if ((data.response.rank) == 5) {
                 var rank = "Master Corporal"
-                var rimg = "https://i.imgur.com/WKZ0sVp.png"
+                var rimg = "https://i.imgur.com/Xm0ExvM.png"
             } else if ((data.response.rank) == 6) {
                 var rank = "Sergeant"
-                var rimg = "https://i.imgur.com/O2WuJAJ.png"
+                var rimg = "https://i.imgur.com/bxJNn2g.png"
             } else if ((data.response.rank) == 7) {
                 var rank = "Staff Sergeant"
-                var rimg = "https://i.imgur.com/bTQLm9h.png"
+                var rimg = "https://i.imgur.com/Hfz92Gd.png"
             } else if ((data.response.rank) == 8) {
                 var rank = "Master Sergeant"
-                var rimg = "https://i.imgur.com/VvivZg0.png"
+                var rimg = "https://i.imgur.com/eLOaVl6.png"
             } else if ((data.response.rank) == 9) {
                 var rank = "First Sergeant"
-                var rimg = "https://i.imgur.com/rCkln3K.png"
+                var rimg = "https://i.imgur.com/ZHRDVhH.png"
             } else if ((data.response.rank) == 10) {
                 var rank = "Sergeant-Major"
-                var rimg = "https://i.imgur.com/xCKvB2G.png"
+                var rimg = "https://i.imgur.com/AlTAYGj.png"
             } else if ((data.response.rank) == 11) {
                 var rank = "Warrant Officer 1"
-                var rimg = "https://i.imgur.com/TJKJ4eB.png"
+                var rimg = "https://i.imgur.com/xQ5DnDm.png"
             } else if ((data.response.rank) == 12) {
                 var rank = "Warrant Officer 2"
-                var rimg = "https://i.imgur.com/Q8U5QIz.png"
+                var rimg = "https://i.imgur.com/mGfEfHF.png"
             } else if ((data.response.rank) == 13) {
                 var rank = "Warrant Officer 3"
-                var rimg = "https://i.imgur.com/Ygi65T7.png"
+                var rimg = "https://i.imgur.com/zIMT8uF.png"
             } else if ((data.response.rank) == 14) {
                 var rank = "Warrant Officer 4"
-                var rimg = "https://i.imgur.com/rx0zDOR.png"
+                var rimg = "https://i.imgur.com/sEWDHa1.png"
             } else if ((data.response.rank) == 15) {
                 var rank = "Warrant Officer 5"
-                var rimg = "https://i.imgur.com/jDmMo5j.png"
+                var rimg = "https://i.imgur.com/i0rXOXh.png"
             } else if ((data.response.rank) == 16) {
                 var rank = "Third Lieutenant"
-                var rimg = "https://i.imgur.com/LLvlTZY.png"
+                var rimg = "https://i.imgur.com/4s1f9zy.png"
             } else if ((data.response.rank) == 17) {
                 var rank = "Second Lieutenant"
-                var rimg = "https://i.imgur.com/1Oor2V6.png"
+                var rimg = "https://i.imgur.com/cuiOFtb.png"
             } else if ((data.response.rank) == 18) {
                 var rank = "First Lieutenant"
-                var rimg = "https://i.imgur.com/03s6YiZ.png"
+                var rimg = "https://i.imgur.com/eJlBzeA.png"
             } else if ((data.response.rank) == 19) {
                 var rank = "Captain"
-                var rimg = "https://i.imgur.com/kf8Uo7U.png"
+                var rimg = "https://i.imgur.com/Bos70Gp.png"
             } else if ((data.response.rank) == 20) {
                 var rank = "Major"
-                var rimg = "https://i.imgur.com/Zl9q3rP.png"
+                var rimg = "https://i.imgur.com/ddHFBhh.png"
             } else if ((data.response.rank) == 21) {
                 var rank = "Lieutenant Colonel"
-                var rimg = "https://i.imgur.com/bmTEps1.png"
+                var rimg = "https://i.imgur.com/SS47PHp.png"
             } else if ((data.response.rank) == 22) {
                 var rank = "Colonel"
-                var rimg = "https://i.imgur.com/Ac9S6w7.png"
+                var rimg = "https://i.imgur.com/RWCGAa9.png"
             } else if ((data.response.rank) == 23) {
                 var rank = "Brigadier"
-                var rimg = "https://i.imgur.com/vBo95NA.png"
+                var rimg = "https://i.imgur.com/Vf40zKZ.png"
             } else if ((data.response.rank) == 24) {
                 var rank = "Major General"
-                var rimg = "https://i.imgur.com/YOuPegl.png"
+                var rimg = "https://i.imgur.com/V9JaKvK.png"
             } else if ((data.response.rank) == 25) {
                 var rank = "Lieutenant General"
-                var rimg = "https://i.imgur.com/dYh43EF.png"
+                var rimg = "https://i.imgur.com/hPbfkzM.png"
             } else if ((data.response.rank) == 26) {
                 var rank = "General"
-                var rimg = "https://i.imgur.com/59NrDOX.png"
+                var rimg = "https://i.imgur.com/MhQJU15.png"
             } else if ((data.response.rank) == 27) {
                 var rank = "Marshal"
-                var rimg = "https://i.imgur.com/S4smUqx.png"
+                var rimg = "https://i.imgur.com/iCIyUvj.png"
             } else if ((data.response.rank) == 28) {
                 var rank = "Field Marshal"
-                var rimg = "https://i.imgur.com/DRmWUfj.png"
+                var rimg = "https://i.imgur.com/7kCraOb.png"
             } else if ((data.response.rank) == 29) {
                 var rank = "Commander"
-                var rimg = "https://i.imgur.com/lZu9Rqt.png"
+                var rimg = "https://i.imgur.com/8Psqads.png"
             } else if ((data.response.rank) == 30) {
                 var rank = "Generalissimo"
-                var rimg = "https://i.imgur.com/Fggz9xh.png"
+                var rimg = "https://i.imgur.com/LqrbExv.png"
                     //protects from errors and shows legend number
             } else if ((data.response.rank) > 31) {
                 var numrank = (data.response.rank) - 30
                 var rank = "Legend " + (numrank)
-                var rimg = "https://i.imgur.com/NahcZQ9.png"
+                var rimg = "https://i.imgur.com/TeNh0QT.png"
             } else if ((data.response.rank) == 31) {
                 var rank = "Legend 1"
-                var rimg = "https://i.imgur.com/NahcZQ9.png"
+                var rimg = "https://i.imgur.com/TeNh0QT.png"
             }
 
         } else if ((data.response.hasPremium) == true) {
             var premm = "Yes";
             if ((data.response.rank) == 1) {
                 var rank = "Recruit"
-                var rimg = "https://i.imgur.com/Q9QMem7.png"
+                var rimg = "https://i.imgur.com/0qfIM1Z.png"
             } else if ((data.response.rank) == 2) {
                 var rank = "Private"
-                var rimg = "https://i.imgur.com/Rl7O3mU.png"
+                var rimg = "https://i.imgur.com/UIM7sVF.png"
             } else if ((data.response.rank) == 3) {
                 var rank = "Gefreiter"
-                var rimg = "https://i.imgur.com/AduPPsl.png"
+                var rimg = "https://i.imgur.com/40LY0Dd.png"
             } else if ((data.response.rank) == 4) {
                 var rank = "Corporal"
-                var rimg = "https://i.imgur.com/aIMVHTC.png"
+                var rimg = "https://i.imgur.com/80Wn8gC.png"
             } else if ((data.response.rank) == 5) {
                 var rank = "Master Corporal"
-                var rimg = "https://i.imgur.com/Dar7hhh.png"
+                var rimg = "https://i.imgur.com/L8ovxmh.png"
             } else if ((data.response.rank) == 6) {
                 var rank = "Sergeant"
-                var rimg = "https://i.imgur.com/T4RE8BT.png"
+                var rimg = "https://i.imgur.com/jZZ9N6G.png"
             } else if ((data.response.rank) == 7) {
                 var rank = "Staff Sergeant"
-                var rimg = "https://i.imgur.com/bS3SIIL.png"
+                var rimg = "https://i.imgur.com/j6a3PEp.png"
             } else if ((data.response.rank) == 8) {
                 var rank = "Master Sergeant"
-                var rimg = "https://i.imgur.com/ruwc6qy.png"
+                var rimg = "https://i.imgur.com/2NTh3rq.png"
             } else if ((data.response.rank) == 9) {
                 var rank = "First Sergeant"
-                var rimg = "https://i.imgur.com/qyWL1rG.png"
+                var rimg = "https://i.imgur.com/XhcLKw9.png"
             } else if ((data.response.rank) == 10) {
                 var rank = "Sergeant-Major"
-                var rimg = "https://i.imgur.com/uOXqDLo.png"
+                var rimg = "https://i.imgur.com/puBBPiy.png"
             } else if ((data.response.rank) == 11) {
                 var rank = "Warrant Officer 1"
-                var rimg = "https://i.imgur.com/sEzBbLQ.png"
+                var rimg = "https://i.imgur.com/6b02PCd.png"
             } else if ((data.response.rank) == 12) {
                 var rank = "Warrant Officer 2"
-                var rimg = "https://i.imgur.com/EZJslol.png"
+                var rimg = "https://i.imgur.com/DzKAJkM.png"
             } else if ((data.response.rank) == 13) {
                 var rank = "Warrant Officer 3"
-                var rimg = "https://i.imgur.com/xMboj6l.png"
+                var rimg = "https://i.imgur.com/UMhxluo.png"
             } else if ((data.response.rank) == 14) {
                 var rank = "Warrant Officer 4"
-                var rimg = "https://i.imgur.com/qLzwet8.png"
+                var rimg = "https://i.imgur.com/hczvRhL.png"
             } else if ((data.response.rank) == 15) {
                 var rank = "Warrant Officer 5"
-                var rimg = "https://i.imgur.com/0hKtwX2.png"
+                var rimg = "https://i.imgur.com/u8wM1NX.png"
             } else if ((data.response.rank) == 16) {
                 var rank = "Third Lieutenant"
-                var rimg = "https://i.imgur.com/Miz0wqt.png"
+                var rimg = "https://i.imgur.com/zPCun7W.png"
             } else if ((data.response.rank) == 17) {
                 var rank = "Second Lieutenant"
-                var rimg = "https://i.imgur.com/qkTXhJR.png"
+                var rimg = "https://i.imgur.com/oSG9rSz.png"
             } else if ((data.response.rank) == 18) {
                 var rank = "First Lieutenant"
-                var rimg = "https://i.imgur.com/VeA0ugN.png"
+                var rimg = "https://i.imgur.com/eFwS47H.png"
             } else if ((data.response.rank) == 19) {
                 var rank = "Captain"
-                var rimg = "https://i.imgur.com/INKmQMy.png"
+                var rimg = "https://i.imgur.com/lAictLC.png"
             } else if ((data.response.rank) == 20) {
                 var rank = "Major"
-                var rimg = "https://i.imgur.com/hJL5fqH.png"
+                var rimg = "https://i.imgur.com/4vjzaqW.png"
             } else if ((data.response.rank) == 21) {
                 var rank = "Lieutenant Colonel"
-                var rimg = "https://i.imgur.com/QpggknT.png"
+                var rimg = "https://i.imgur.com/DTMx1bQ.png"
             } else if ((data.response.rank) == 22) {
                 var rank = "Colonel"
-                var rimg = "https://i.imgur.com/9dg1YYq.png"
+                var rimg = "https://i.imgur.com/phSx0xg.png"
             } else if ((data.response.rank) == 23) {
                 var rank = "Brigadier"
-                var rimg = "https://i.imgur.com/Af6FJjE.png"
+                var rimg = "https://i.imgur.com/gb8U08L.png"
             } else if ((data.response.rank) == 24) {
                 var rank = "Major General"
-                var rimg = "https://i.imgur.com/SYIelDs.png"
+                var rimg = "https://i.imgur.com/IBOX5OG.png"
             } else if ((data.response.rank) == 25) {
                 var rank = "Lieutenant General"
-                var rimg = "https://i.imgur.com/J7ob7co.png"
+                var rimg = "https://i.imgur.com/EiiqyU6.png"
             } else if ((data.response.rank) == 26) {
                 var rank = "General"
-                var rimg = "https://i.imgur.com/laq0luJ.png"
+                var rimg = "https://i.imgur.com/FY8dt0m.png"
             } else if ((data.response.rank) == 27) {
                 var rank = "Marshal"
-                var rimg = "https://i.imgur.com/4QzfKbh.png"
+                var rimg = "https://i.imgur.com/SzpgCGL.png"
             } else if ((data.response.rank) == 28) {
                 var rank = "Field Marshal"
-                var rimg = "https://i.imgur.com/LVcFtIW.png"
+                var rimg = "https://i.imgur.com/tYpws3Q.png"
             } else if ((data.response.rank) == 29) {
                 var rank = "Commander"
-                var rimg = "https://i.imgur.com/YLKv7Qy.png"
+                var rimg = "https://i.imgur.com/LQOMIvi.png"
             } else if ((data.response.rank) == 30) {
                 var rank = "Generalissimo"
-                var rimg = "https://i.imgur.com/i8lKuZh.png"
+                var rimg = "https://i.imgur.com/4FM9Z45.png"
             } else if ((data.response.rank) > 31) {
-                var rimg = "https://i.imgur.com/qK6onnG.png"
+                var rimg = "https://i.imgur.com/fB9vCBX.png"
                 var numrank = (data.response.rank) - 30
                 var rank = "Legend " + (numrank)
             } else if ((data.response.rank) == 31) {
                 var rank = "Legend 1"
-                var rimg = "https://imgur.com/qK6onnG.png"
+                var rimg = "https://imgur.com/fB9vCBX.png"
             }
         }
 

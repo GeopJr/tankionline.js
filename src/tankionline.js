@@ -361,11 +361,17 @@ module.exports = class Ratings {
         };
 
         //total supplies used
-        var totalsups = (data.response.suppliesUsage[0].usages) + (data.response.suppliesUsage[1].usages) + (data.response.suppliesUsage[2].usages) + (data.response.suppliesUsage[3].usages) + (data.response.suppliesUsage[4].usages) + (data.response.suppliesUsage[5].usages) + (data.response.suppliesUsage[6].usages)
-
+        var totalsups = 0
+        for(var i=0; i < (data.response.suppliesUsage).length; i++){
+            var totalsups = totalsups + data.response.suppliesUsage[i].usages
+        }
+        
         //total time played in ms
-        var timeplayedms = (data.response.modesPlayed[0].timePlayed) + (data.response.modesPlayed[1].timePlayed) + (data.response.modesPlayed[2].timePlayed) + (data.response.modesPlayed[3].timePlayed) + (data.response.modesPlayed[4].timePlayed) + (data.response.modesPlayed[5].timePlayed) + (data.response.modesPlayed[6].timePlayed);
-
+        var timeplayedms = 0
+        for(var i=0; i < (data.response.modesPlayed).length; i++){
+            var timeplayedms = timeplayedms + data.response.modesPlayed[i].timePlayed
+        }
+        
         //convert to readable time
         var total_seconds = timeplayedms / 1000
         var seconds = total_seconds % 60

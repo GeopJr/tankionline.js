@@ -61,7 +61,7 @@ const tankionline = require("tankionline.js");
 
 const Top = new tankionline.top("crystals");
 
-Rank.then(data => {
+Top.then(data => {
 console.log(data.top[0].value)
 //=> 51120
 }).catch(error => { console.log(error)});

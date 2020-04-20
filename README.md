@@ -24,7 +24,7 @@ $ npm i tankionline.js
 ```
 
 # Examples
-# Ratings
+### Ratings
 ```js
 // Initialize
 const tankionline = require("tankionline.js");

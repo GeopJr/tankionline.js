@@ -224,7 +224,7 @@ module.exports = class Ratings {
                 var rank = "Legend " + (numrank)
             } else if ((data.response.rank) == 31) {
                 var rank = "Legend 1"
-                var rimg = "https://imgur.com/fB9vCBX.png"
+                var rimg = "https://i.imgur.com/fB9vCBX.png"
             }
         }
 

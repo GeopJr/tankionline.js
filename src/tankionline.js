@@ -19,8 +19,8 @@ module.exports = class Ratings {
      * Returns ratings of specified user in specified language.
      */
     async stats() {
-        const result = await fetch(`https://ratings.tankionline.com/api/eu/profile/?user=${this.userinfo[0]}&lang=${this.userinfo[1]}`);
-        const data = await result.json();
+        let result = await fetch(`https://ratings.tankionline.com/api/eu/profile/?user=${this.userinfo[0]}&lang=${this.userinfo[1]}`);
+        let data = await result.json();
 
         // If player was not found
         if (data.responseType === 'NOT_FOUND') throw new Error(`Player not found ${this.userinfo[0]}`);
@@ -33,26 +33,26 @@ module.exports = class Ratings {
         let expPosition = await new values(data.response.rating.score.value, data.response.previousRating.score.value).calc()
         let goldsPosition = await new values(data.response.rating.golds.value, data.response.previousRating.golds.value).calc()
 
-        //total supplies used
-        var totalsups = 0
-        for(var i=0; i < (data.response.suppliesUsage).length; i++){
-            var totalsups = totalsups + data.response.suppliesUsage[i].usages
+        // total supplies used + json build
+        let totalsups = 0
+        let jsonSupplies = {}
+        for(let i=0; i < (data.response.suppliesUsage).length; i++){
+            totalsups = totalsups + data.response.suppliesUsage[i].usages
+            jsonSupplies[data.response.suppliesUsage[i].name] = data.response.suppliesUsage[i].usages
         }
-        
-        //total time played in ms
-        var timeplayedms = 0
-        for(var i=0; i < (data.response.modesPlayed).length; i++){
-            var timeplayedms = timeplayedms + data.response.modesPlayed[i].timePlayed
-        }
-        
-        //convert to readable time
-        var total_seconds = timeplayedms / 1000
-        var seconds = total_seconds % 60
-        var minutes = (total_seconds / 60) % 60
-        var hours = total_seconds / (60 * 60)
+        jsonSupplies["totalUsages"] = totalsups
 
-        //json to return
-        var dataplus = {
+        // total time played in ms
+        let timeplayedms = 0
+        for(let i=0; i < (data.response.modesPlayed).length; i++){
+            timeplayedms = timeplayedms + data.response.modesPlayed[i].timePlayed
+        }
+
+        // convert to seconds
+        let total_seconds = timeplayedms / 1000
+
+        // return
+        return {
             name: (data.response.name),
             premium: (data.response.hasPremium ? "Yes" : "No"),
             rank: (rank.name),
@@ -71,20 +71,11 @@ module.exports = class Ratings {
                 expLeft: ((data.response.scoreNext) - (data.response.score))
             },
             playtime: {
-                hours: (hours | 0),
-                minutes: (minutes | 0),
-                seconds: (seconds | 0)
+                hours: (total_seconds / (60 * 60) | 0),
+                minutes: ((total_seconds / 60) % 60 | 0),
+                seconds: (total_seconds % 60 | 0)
             },
-            supplies: {
-                [data.response.suppliesUsage[0].name]: (data.response.suppliesUsage[0].usages),
-                [data.response.suppliesUsage[1].name]: (data.response.suppliesUsage[1].usages),
-                [data.response.suppliesUsage[2].name]: (data.response.suppliesUsage[2].usages),
-                [data.response.suppliesUsage[3].name]: (data.response.suppliesUsage[3].usages),
-                [data.response.suppliesUsage[4].name]: (data.response.suppliesUsage[4].usages),
-                [data.response.suppliesUsage[5].name]: (data.response.suppliesUsage[5].usages),
-                [data.response.suppliesUsage[6].name]: (data.response.suppliesUsage[6].usages),
-                totalUsages: (totalsups)
-            },
+            supplies: jsonSupplies,
             rating: {
                 experience: {
                     position: {
@@ -129,7 +120,5 @@ module.exports = class Ratings {
                 }
             },
         };
-
-        return dataplus;
     }
 };

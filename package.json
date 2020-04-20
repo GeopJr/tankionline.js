@@ -1,6 +1,6 @@
 {
   "name": "tankionline.js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A easy to use wrapper that fetches player ratings for Tanki Online",
   "main": "src/tankionline.js",
   "scripts": {

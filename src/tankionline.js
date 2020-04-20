@@ -1,4 +1,5 @@
-var ranks = require('./ranks.js');
+const ranks = require('./ranks.js');
+const values = require('./values.js')
 const fetch = require('node-fetch');
 
 module.exports = class Ratings {
@@ -27,132 +28,23 @@ module.exports = class Ratings {
         // Ranks
         let rank = await new ranks(data.response.hasPremium, data.response.rank).rank()
 
-        //crystal ratings
-        if ((data.response.rating.crystals.value) == -1) {
-            var valcr = "0";
-            var upordowncr = null;
-        } else if ((data.response.rating.crystals.value) > (data.response.previousRating.crystals.value)) {
-            var valcr = (data.response.rating.crystals.value);
-            var upordowncr = "▲";
-        } else if ((data.response.rating.crystals.value) < (data.response.previousRating.crystals.value)) {
-            var valcr = (data.response.rating.crystals.value);
-            var upordowncr = "▼";
-        } else {
-            var valcr = (data.response.rating.score.value);
-            var upordowncr = null;
-        };
-
-        //experience ratings
-        if ((data.response.rating.score.value) == -1) {
-            var valsr = "0";
-            var upordownsr = null;
-        } else if ((data.response.rating.score.value) > (data.response.previousRating.score.value)) {
-            var valsr = (data.response.rating.score.value);
-            var upordownsr = "▲";
-        } else if ((data.response.rating.score.value) < (data.response.previousRating.score.value)) {
-            var valsr = (data.response.rating.score.value);
-            var upordownsr = "▼";
-        } else {
-            var valsr = (data.response.rating.score.value);
-            var upordownsr = null;
-        };
-
-        //golds ratings
-        if ((data.response.rating.golds.value) == -1) {
-            var valgd = "0";
-            var upordowngd = null;
-        } else if ((data.response.rating.golds.value) > (data.response.previousRating.golds.value)) {
-            var valgd = (data.response.rating.golds.value);
-            var upordowngd = "▲";
-        } else if ((data.response.rating.golds.value) < (data.response.previousRating.golds.value)) {
-            var valgd = (data.response.rating.golds.value);
-            var upordowngd = "▼";
-        } else {
-            var valgd = (data.response.rating.golds.value);
-            var upordowngd = null;
-        };
-
-        //efficiency ratings
-        if ((data.response.rating.efficiency.value) == -1) {
-            var valef = "0";
-        } else {
-            var valeforig = (data.response.rating.efficiency.value)
-            var numrd = Math.round((valeforig) / 100) * 100
-            var numint = Number((numrd))
-            var numstr = numint.toString().replace(/^0+|0+$/g, "")
-            var valef = Number((numstr))
-        };
-
-        //positions ratings
-        if ((data.response.rating.efficiency.position) == -1) {
-            var posef = "0";
-        } else {
-            var posef = (data.response.rating.efficiency.position);
-        };
-
-        if ((data.response.rating.crystals.position) == -1) {
-            var poscr = "0";
-        } else {
-            var poscr = (data.response.rating.crystals.position);
-        };
-
-        if ((data.response.rating.golds.position) == -1) {
-            var posgd = "0";
-        } else {
-            var posgd = (data.response.rating.golds.position);
-        };
-
-        if ((data.response.rating.score.position) == -1) {
-            var possr = "0";
-        } else {
-            var possr = (data.response.rating.score.position);
-        };
-
-
-        if ((data.response.previousRating.crystals.position) == -1) {
-            var preposcr = "0";
-        } else {
-            var preposcr = (data.response.previousRating.crystals.position);
-        };
-
-        if ((data.response.previousRating.golds.position) == -1) {
-            var preposgd = "0";
-        } else {
-            var preposgd = (data.response.previousRating.golds.position);
-        };
-
-        if ((data.response.previousRating.score.position) == -1) {
-            var prepossr = "0";
-        } else {
-            var prepossr = (data.response.previousRating.score.position);
-        };
-
-
-        //values ratings
-        if ((data.response.previousRating.crystals.value) == -1) {
-            var prevalcr = "0";
-        } else {
-            var prevalcr = (data.response.previousRating.crystals.value);
-        };
-
-        if ((data.response.previousRating.golds.value) == -1) {
-            var prevalgd = "0";
-        } else {
-            var prevalgd = (data.response.previousRating.golds.value);
-        };
-
-        if ((data.response.previousRating.score.value) == -1) {
-            var prevalsr = "0";
-        } else {
-            var prevalsr = (data.response.previousRating.score.value);
-        };
+        // Values
+        let crystalPosition = await new values(data.response.rating.crystals.value, data.response.previousRating.crystals.value).calc()
+        let expPosition = await new values(data.response.rating.score.value, data.response.previousRating.score.value).calc()
+        let goldsPosition = await new values(data.response.rating.golds.value, data.response.previousRating.golds.value).calc()
 
         //total supplies used
-        var totalsups = (data.response.suppliesUsage[0].usages) + (data.response.suppliesUsage[1].usages) + (data.response.suppliesUsage[2].usages) + (data.response.suppliesUsage[3].usages) + (data.response.suppliesUsage[4].usages) + (data.response.suppliesUsage[5].usages) + (data.response.suppliesUsage[6].usages)
-
+        var totalsups = 0
+        for(var i=0; i < (data.response.suppliesUsage).length; i++){
+            var totalsups = totalsups + data.response.suppliesUsage[i].usages
+        }
+        
         //total time played in ms
-        var timeplayedms = (data.response.modesPlayed[0].timePlayed) + (data.response.modesPlayed[1].timePlayed) + (data.response.modesPlayed[2].timePlayed) + (data.response.modesPlayed[3].timePlayed) + (data.response.modesPlayed[4].timePlayed) + (data.response.modesPlayed[5].timePlayed) + (data.response.modesPlayed[6].timePlayed);
-
+        var timeplayedms = 0
+        for(var i=0; i < (data.response.modesPlayed).length; i++){
+            var timeplayedms = timeplayedms + data.response.modesPlayed[i].timePlayed
+        }
+        
         //convert to readable time
         var total_seconds = timeplayedms / 1000
         var seconds = total_seconds % 60
@@ -196,43 +88,43 @@ module.exports = class Ratings {
             rating: {
                 experience: {
                     position: {
-                        now: (possr),
-                        before: (prepossr)
+                        now: (data.response.rating.score.position == -1 ? "0" : data.response.rating.score.position),
+                        before: (data.response.previousRating.score.position == -1 ? "0" : data.response.previousRating.score.position)
                     },
                     value: {
-                        now: (valsr),
-                        before: (prevalsr),
-                        arrow: (upordownsr)
+                        now: (expPosition.current),
+                        before: (expPosition.old),
+                        arrow: (expPosition.arrow)
                     }
                 },
                 golds: {
                     position: {
-                        now: (posgd),
-                        before: (preposgd)
+                        now: (data.response.rating.golds.position == -1 ? "0" : data.response.rating.golds.position),
+                        before: (data.response.previousRating.golds.position == -1 ? "0" : data.response.previousRating.golds.position)
                     },
                     value: {
-                        now: (valgd),
-                        before: (prevalgd),
-                        arrow: (upordowngd)
+                        now: (goldsPosition.current),
+                        before: (goldsPosition.old),
+                        arrow: (goldsPosition.arrow)
                     }
                 },
                 crystals: {
                     position: {
-                        now: (poscr),
-                        before: (preposcr)
+                        now: (data.response.rating.crystals.position == -1 ? "0" : data.response.rating.crystals.position),
+                        before: (data.response.previousRating.crystals.position == -1 ? "0" : data.response.previousRating.crystals.position)
                     },
                     value: {
-                        now: (valcr),
-                        before: (prevalcr),
-                        arrow: (upordowncr)
+                        now: (crystalPosition.current),
+                        before: (crystalPosition.old),
+                        arrow: (crystalPosition.arrow)
                     }
                 },
                 efficiency: {
                     position: {
-                        now: (posef)
+                        now: (data.response.rating.efficiency.position == -1 ? "0" : data.response.rating.efficiency.position)
                     },
                     value: {
-                        now: (valef)
+                        now: ((data.response.rating.efficiency.value) == -1 ? "0" : Math.floor(data.response.rating.efficiency.value / 100))
                     }
                 }
             },

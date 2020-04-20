@@ -23,18 +23,47 @@
 $ npm i tankionline.js
 ```
 
-# Example
+# Examples
+# Ratings
 ```js
 // Initialize
 const tankionline = require("tankionline.js");
 
-const Ratings = new tankionline('GeopJr', 'en');
+const Ratings = new tankionline.ratings('GeopJr', 'en');
 
 Ratings.stats().then(data => {
 console.log(data)
 // JSON object
 console.log(data.kd)
 // 2.99
+}).catch(error => { console.log(error)});
+// Catch errors
+```
+### Ranks
+```js
+// Initialize
+const tankionline = require("tankionline.js");
+
+const Rank = new tankionline.ranks(true, 1);
+
+Rank.then(data => {
+console.log(data.rank.name)
+//=> Recruit
+console.log(data.rank.image)
+//=> https://i.imgur.com/0qfIM1Z.png
+}).catch(error => { console.log(error)});
+// Catch errors
+```
+### Top
+```js
+// Initialize
+const tankionline = require("tankionline.js");
+
+const Top = new tankionline.top("crystals");
+
+Rank.then(data => {
+console.log(data.top[0].value)
+//=> 51120
 }).catch(error => { console.log(error)});
 // Catch errors
 ```

@@ -24,13 +24,8 @@ module.exports = class Ratings {
         // If player was not found
         if (data.responseType === 'NOT_FOUND') throw new Error(`Player not found ${this.userinfo[0]}`);
 
-	// Ranks
-	let rank = await new ranks(data.response.hasPremium, data.response.rank).rank()
-
-
-
-        //expleft
-        var expleft = (data.response.scoreNext) - (data.response.score)
+        // Ranks
+        let rank = await new ranks(data.response.hasPremium, data.response.rank).rank()
 
         //crystal ratings
         if ((data.response.rating.crystals.value) == -1) {
@@ -164,10 +159,6 @@ module.exports = class Ratings {
         var minutes = (total_seconds / 60) % 60
         var hours = total_seconds / (60 * 60)
 
-        //turrents and resistance modules
-        var turr = (data.response.turretsPlayed).length
-        var resis = (data.response.resistanceModules).length
-
         //json to return
         var dataplus = {
             name: (data.response.name),
@@ -179,13 +170,13 @@ module.exports = class Ratings {
             kills: (data.response.kills),
             deaths: (data.response.deaths),
             kd: ((data.response.deaths) === 0 ? (data.response.kills) / (data.response.deaths) : ((data.response.kills) / (data.response.deaths)).toFixed(2)),
-            turretsPlayed: (turr),
-            resistanceModules: (resis),
+            turretsPlayed: ((data.response.turretsPlayed).length),
+            resistanceModules: ((data.response.resistanceModules).length),
             gearScore: (data.response.gearScore),
             exp: {
                 expNow: (data.response.score),
                 expNext: (data.response.scoreNext),
-                expLeft: (expleft)
+                expLeft: ((data.response.scoreNext) - (data.response.score))
             },
             playtime: {
                 hours: (hours | 0),

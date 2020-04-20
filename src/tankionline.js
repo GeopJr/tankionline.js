@@ -374,10 +374,25 @@ module.exports = class Ratings {
         }
         
         //convert to readable time
-        var total_seconds = timeplayedms / 1000
-        var seconds = total_seconds % 60
-        var minutes = (total_seconds / 60) % 60
-        var hours = total_seconds / (60 * 60)
+        function formatHours(x){
+            var total_seconds = (x / 1000) | 0
+            var hours = (total_seconds / (60 * 60))| 0
+            return hours
+        }
+        
+        //convert to readable time
+        function formatMinutes(x){
+            var total_seconds = (x / 1000) | 0
+            var minutes = ((total_seconds / 60) % 60) | 0
+            return minutes
+        }
+        
+        //convert to readable time
+        function formatSeconds(x){
+            var total_seconds = (x / 1000) | 0
+            var seconds = (total_seconds % 60) | 0
+            return seconds
+        }
 
         //turrents and resistance modules
         var turr = (data.response.turretsPlayed).length
@@ -403,9 +418,9 @@ module.exports = class Ratings {
                 expLeft: (expleft)
             },
             playtime: {
-                hours: (hours | 0),
-                minutes: (minutes | 0),
-                seconds: (seconds | 0)
+                hours: (`${formatHours(timeplayedms)}` | 0),
+                minutes: (`${formatMinutes(timeplayedms)}` | 0),
+                seconds: (`${formatSeconds(timeplayedms)}` | 0)
             },
             supplies: {
                 [data.response.suppliesUsage[0].name]: (data.response.suppliesUsage[0].usages),
@@ -416,6 +431,89 @@ module.exports = class Ratings {
                 [data.response.suppliesUsage[5].name]: (data.response.suppliesUsage[5].usages),
                 [data.response.suppliesUsage[6].name]: (data.response.suppliesUsage[6].usages),
                 totalUsages: (totalsups)
+            },
+            gamemodes:{
+                [data.response.modesPlayed[0].type]: {
+                    name: (data.response.modesPlayed[0].name),
+                    scoreEarned: (data.response.modesPlayed[0].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[0].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[0].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[0].timePlayed)}` | 0)
+                    },
+                },
+                [data.response.modesPlayed[1].type]: {
+                    name: (data.response.modesPlayed[1].name),
+                    scoreEarned: (data.response.modesPlayed[1].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[1].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[1].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[1].timePlayed)}` | 0)
+                    },                
+                },
+                [data.response.modesPlayed[2].type]: {
+                    name: (data.response.modesPlayed[2].name),
+                    scoreEarned: (data.response.modesPlayed[2].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[2].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[2].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[2].timePlayed)}` | 0)
+                    },                
+                },
+                [data.response.modesPlayed[3].type]: {
+                    name: (data.response.modesPlayed[3].name),
+                    scoreEarned: (data.response.modesPlayed[3].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[3].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[3].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[3].timePlayed)}` | 0)
+                    },                
+                },
+                [data.response.modesPlayed[4].type]: {
+                    name: (data.response.modesPlayed[4].name),
+                    scoreEarned: (data.response.modesPlayed[4].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[4].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[4].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[4].timePlayed)}` | 0)
+                    },                
+                },
+                [data.response.modesPlayed[5].type]: {
+                    name: (data.response.modesPlayed[5].name),
+                    scoreEarned: (data.response.modesPlayed[5].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[5].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[5].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[5].timePlayed)}` | 0)
+                    },                
+                },
+                [data.response.modesPlayed[6].type]: {
+                    name: (data.response.modesPlayed[6].name),
+                    scoreEarned: (data.response.modesPlayed[6].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[6].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[6].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[6].timePlayed)}` | 0)
+                    },                
+                },
+                [data.response.modesPlayed[7].type]: {
+                    name: (data.response.modesPlayed[7].name),
+                    scoreEarned: (data.response.modesPlayed[7].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[7].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[7].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[7].timePlayed)}` | 0)
+                    },                
+                },
+                [data.response.modesPlayed[8].type]: {
+                    name: (data.response.modesPlayed[8].name),
+                    scoreEarned: (data.response.modesPlayed[8].scoreEarned),
+                    playtime: {
+                        hours: (`${formatHours(data.response.modesPlayed[8].timePlayed)}` | 0),
+                        minutes: (`${formatMinutes(data.response.modesPlayed[8].timePlayed)}` | 0),
+                        seconds: (`${formatSeconds(data.response.modesPlayed[8].timePlayed)}` | 0)
+                    },                
+                }
             },
             rating: {
                 experience: {

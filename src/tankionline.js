@@ -1,8 +1,79 @@
 const ranks = require('./ranks.js');
-const values = require('./values.js')
+const values = require('./values.js');
+const top = require('./top.js');
 const fetch = require('node-fetch');
 
-module.exports = class Ratings {
+function formatHours(sec) {
+    let hours = (sec / (60 * 60)) | 0
+    return hours
+}
+
+function formatMinutes(sec) {
+    let minutes = ((sec / 60) % 60) | 0
+    return minutes
+}
+
+function formatSeconds(sec) {
+    let seconds = (sec % 60) | 0
+    return seconds
+}
+
+module.exports.top = class Top {
+    constructor(type) {
+        let types = ['crystals', 'experience', 'golds', 'efficiency']
+        if (!types.includes(type.toLowerCase())) throw new Error(`type must be ${types.join("/")}`);
+        if (type.toLowerCase() === "crystals") return new Promise(async(resolve, reject) => {
+            try {
+                this.top = await (await new top()).crystals()
+            } catch (ex) {
+                return reject(ex);
+            }
+            resolve(await this)
+        });
+        if (type.toLowerCase() === "experience") return new Promise(async(resolve, reject) => {
+            try {
+                this.top = await (await new top()).score()
+            } catch (ex) {
+                return reject(ex);
+            }
+            resolve(await this)
+        });
+        if (type.toLowerCase() === "golds") return new Promise(async(resolve, reject) => {
+            try {
+                this.top = await (await new top()).golds()
+            } catch (ex) {
+                return reject(ex);
+            }
+            resolve(await this)
+        });
+        if (type.toLowerCase() === "efficiency") return new Promise(async(resolve, reject) => {
+            try {
+                this.top = await (await new top()).efficiency()
+            } catch (ex) {
+                return reject(ex);
+            }
+            resolve(await this)
+        });
+    }
+}
+
+module.exports.ranks = class Ranks {
+    constructor(premium, rank) {
+
+        return new Promise(async(resolve, reject) => {
+                try {
+                    this.rank = await new ranks(premium, rank).rank()
+                } catch (ex) {
+                    return reject(ex);
+                }
+                resolve(this);
+            }
+
+        )
+    }
+}
+
+module.exports.ratings = class Ratings {
     /**
      * @param {string} username of the user
      * @param {string} lang
@@ -10,8 +81,8 @@ module.exports = class Ratings {
     constructor(username, lang = 'en') {
         if (!username) throw new Error('Please specify a username');
         if (typeof lang !== 'string') throw new TypeError(`lang is not a string`);
-        let langs = ['en','pl','de','ru','br','es']
-        if (!langs.includes(lang.toLowerCase())) throw new Error(`lang must be en/ru/pl/de/br/es`);
+        let langs = ['en', 'pl', 'de', 'ru', 'br', 'es']
+        if (!langs.includes(lang.toLowerCase())) throw new Error(`lang must be ${langs.join("/")}`);
         this.userinfo = [username, lang]
     }
 
@@ -36,7 +107,7 @@ module.exports = class Ratings {
         // total supplies used + json build
         let totalsups = 0
         let jsonSupplies = {}
-        for(let i=0; i < (data.response.suppliesUsage).length; i++){
+        for (let i = 0; i < (data.response.suppliesUsage).length; i++) {
             totalsups = totalsups + data.response.suppliesUsage[i].usages
             jsonSupplies[data.response.suppliesUsage[i].name] = data.response.suppliesUsage[i].usages
         }
@@ -44,12 +115,27 @@ module.exports = class Ratings {
 
         // total time played in ms
         let timeplayedms = 0
-        for(let i=0; i < (data.response.modesPlayed).length; i++){
+        for (let i = 0; i < (data.response.modesPlayed).length; i++) {
             timeplayedms = timeplayedms + data.response.modesPlayed[i].timePlayed
         }
 
         // convert to seconds
         let total_seconds = timeplayedms / 1000
+
+        // gamemode json build
+        let jsonGM = {}
+        for (let i = 0; i < (data.response.modesPlayed).length; i++) {
+            let totalGMseconds = data.response.modesPlayed[i].timePlayed / 1000
+            jsonGM[data.response.modesPlayed[i].type] = {
+                name: (data.response.modesPlayed[i].name),
+                scoreEarned: (data.response.modesPlayed[i].scoreEarned),
+                playtime: {
+                    hours: (formatHours(totalGMseconds)),
+                    minutes: (formatMinutes(totalGMseconds)),
+                    seconds: (formatSeconds(totalGMseconds))
+                }
+            }
+        }
 
         // return
         return {
@@ -71,9 +157,9 @@ module.exports = class Ratings {
                 expLeft: ((data.response.scoreNext) - (data.response.score))
             },
             playtime: {
-                hours: (total_seconds / (60 * 60) | 0),
-                minutes: ((total_seconds / 60) % 60 | 0),
-                seconds: (total_seconds % 60 | 0)
+                hours: (formatHours(total_seconds)),
+                minutes: (formatMinutes(total_seconds)),
+                seconds: (formatSeconds(total_seconds))
             },
             supplies: jsonSupplies,
             rating: {
@@ -119,6 +205,7 @@ module.exports = class Ratings {
                     }
                 }
             },
+            gamemodes: jsonGM
         };
     }
 };

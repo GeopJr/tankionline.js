@@ -8,7 +8,8 @@ module.exports = class Ratings {
     constructor(username, lang = 'en') {
         if (!username) throw new Error('Please specify a username');
         if (typeof lang !== 'string') throw new TypeError(`lang is not a string`);
-        if (lang != 'en' && lang != 'pl' && lang != 'de' && lang != 'ru' && lang != 'br' && lang != 'es') throw new Error(`lang must be en/ru/pl/de/br/es`);
+        let langs = ['en','pl','de','ru','br','es']
+        if (!langs.includes(lang.toLowerCase())) throw new Error(`lang must be en/ru/pl/de/br/es`);
         this.userinfo = [username, lang]
     }
 

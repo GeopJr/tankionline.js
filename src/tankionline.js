@@ -27,14 +27,6 @@ module.exports = class Ratings {
 	// Ranks
 	let rank = await new ranks(data.response.hasPremium, data.response.rank).rank()
 
-        if ((data.response.deaths) == 0) {
-            var kdratioround = (data.response.kills)
-        } else {
-            //kd ratio
-            var kdratio = (data.response.kills) / (data.response.deaths)
-                //kd ratio rounded
-            var kdratioround = kdratio.toFixed(2)
-        }
 
 
         //expleft
@@ -186,7 +178,7 @@ module.exports = class Ratings {
             crystals: (data.response.earnedCrystals),
             kills: (data.response.kills),
             deaths: (data.response.deaths),
-            kd: (kdratioround),
+            kd: ((data.response.deaths) === 0 ? (data.response.kills) / (data.response.deaths) : ((data.response.kills) / (data.response.deaths)).toFixed(2)),
             turretsPlayed: (turr),
             resistanceModules: (resis),
             gearScore: (data.response.gearScore),

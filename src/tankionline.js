@@ -147,7 +147,7 @@ module.exports.ratings = class Ratings {
             crystals: (data.response.earnedCrystals),
             kills: (data.response.kills),
             deaths: (data.response.deaths),
-            kd: ((data.response.deaths) === 0 ? (data.response.kills) / (data.response.deaths) : ((data.response.kills) / (data.response.deaths)).toFixed(2)),
+            kd: ((data.response.deaths) === 0 ? (data.response.kills) : ((data.response.kills) / (data.response.deaths)).toFixed(2)),
             turretsPlayed: ((data.response.turretsPlayed).length),
             resistanceModules: ((data.response.resistanceModules).length),
             gearScore: (data.response.gearScore),
